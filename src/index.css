@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+:root {
+  --dark-blue: hsl(209, 23%, 22%);
+  --very-dark-blue-bg: hsl(207, 26%, 17%);
+  --very-dark-blue: hsl(200, 15%, 8%);
+  --dark-gray: hsl(0, 0%, 52%);
+  --very-light-gray: hsl(0, 0%, 98%);
+  --white: hsl(0, 0%, 100%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Nunito Sans", sans-serif;
+  color: var(--very-dark-blue);
+  background-color: var(--very-light-gray);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 1rem;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.16);
+  background-color: var(--white);
+}
+
+header .mode {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+
+header svg {
+  width: 18px;
+}
+
+header h3 {
+  font-weight: 600;
+}
+
+header p {
+  font-weight: 300;
+  font-size: 13px;
+}
+
+.search-box {
+  margin: 1.5rem 1rem;
+  padding: .9rem 2rem;
+  background-color: var(--white);
+  color: var(--dark-gray);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  border-radius: .3rem;
+}
+
+.search-box input {
+  font-family: inherit;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+.select-region {
+  margin: 2.5rem 1rem;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--white);
+  padding: 1rem 1.5rem;
+  border-radius: .3rem;
+}
+
+.filter p {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.filter i {
+  font-size: 11px;
+}
+
+.regions {
+  background-color: var(--white);
+  padding: 1rem 1.5rem;
+  border-radius: .3rem;
+  font-size: 13px;
+  position: absolute;
+  width: 200px;
+  margin-top: 3.5rem;
+  /* display: none; */
+}
+
+.regions ul {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.regions ul li {
+  list-style: none;
+}
+
+.card {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--white);
+  margin: 0 auto 2.5rem auto;
+  border-radius: .3rem;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.16);
+}
+
+.card img {
+  width: 100%;
+}
+
+.card-info {
+  margin: 2rem 1.5rem;
+}
+
+.card-info h2 {
+  margin-bottom: 1rem;
+  font-size: 19px;
+}
+
+.card-info p {
+  margin-bottom: .5rem;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.card-info span {
+  font-weight: 300;
+  font-size: 15px;
+}
