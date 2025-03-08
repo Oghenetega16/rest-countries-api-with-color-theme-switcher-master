@@ -101,7 +101,7 @@ header p {
   position: absolute;
   width: 200px;
   margin-top: 3.5rem;
-  /* display: none; */
+  
 }
 
 .regions ul {
@@ -112,6 +112,7 @@ header p {
 
 .regions ul li {
   list-style: none;
+  cursor: pointer;
 }
 
 .card {
@@ -147,4 +148,14 @@ header p {
 .card-info span {
   font-weight: 300;
   font-size: 15px;
+}
+
+.dark-mode {
+  background-color: var(--very-dark-blue-bg);
+  color: var(--white);
+}
+
+.light-mode {
+  background-color: var(--very-light-gray);
+  color: var(--very-dark-blue);
 }
