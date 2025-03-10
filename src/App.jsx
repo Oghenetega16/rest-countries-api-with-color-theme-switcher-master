@@ -2,17 +2,11 @@ import Header from './components/Header'
 import SearchBox from './components/SearchBox'
 import FilterByRegion from './components/FilterByRegion'
 import Card from './components/Card'
-import data from './data.json'
+import data from '../public/data.json'
 import React from 'react'
 
 export default function App() {
-
-  const [isDarkMode, setIsDarkMode] = React.useState(false)
-  function toggleTheme() {
-    setIsDarkMode(!isDarkMode)
-  }
-
-  const infoData = data.map((info) => {
+  const Cards = data.map((info) => {
     return <Card 
     key={info.id} 
     {...info}
@@ -21,14 +15,15 @@ export default function App() {
 
   return (
     <>
-      <div className={isDarkMode ? 'body dark-mode' : 'light-mode'}>
-        <Header changeTheme={toggleTheme}/>
+      <div>
+        <Header />
 
-        <SearchBox />
+        <div className='search_region'>
+          <SearchBox />
+          <FilterByRegion />
+        </div>
 
-        <FilterByRegion />
-
-        <div>{infoData}</div>
+        <div className='cards'>{Cards}</div>
       </div>
       
 
