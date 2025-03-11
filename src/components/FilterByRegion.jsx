@@ -16,7 +16,6 @@ export default function FilterByRegion() {
 
     const regions = ['Africa', 'America', 'Asia', 'Europe', 'Oceania']
 
-
     return (
         <>
             <div className='select-region'>

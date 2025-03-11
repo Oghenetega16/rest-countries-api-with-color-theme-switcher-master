@@ -1,15 +1,15 @@
 import Header from './components/Header'
 import SearchBox from './components/SearchBox'
 import FilterByRegion from './components/FilterByRegion'
-import Card from './components/Card'
+import HomePage from './components/HomePage'
 import data from '../public/data.json'
 import React from 'react'
 
 export default function App() {
-  const Cards = data.map((info) => {
-    return <Card 
-    key={info.id} 
-    {...info}
+  const Cards = data.map((card) => {
+    return <HomePage 
+    key={card.id} 
+    {...card}
     />
   })
 
@@ -25,8 +25,6 @@ export default function App() {
 
         <div className='cards'>{Cards}</div>
       </div>
-      
-
     </>
   )
 }
