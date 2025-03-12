@@ -1,7 +1,4 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-
-export default function Card(props) {
+export default function Card(country, onSelectCountry) {
 
     function formatNumberWithCommas(number) {
         const parts = number.toString().split('.');
@@ -9,31 +6,15 @@ export default function Card(props) {
         return parts.join('.');
     }
 
-    const [countries, setCountries] = React.useState([]);
-
-    React.useEffect(() => {
-        const fetchCountries = async () => {
-            const response = await fetch('/data.json');
-            const data = await response.json();
-            setCountries(data);
-        };
-
-        fetchCountries();
-    }, []);
-
     return (
-        <div className="card">
-            {countries.map(country => (
-                <Link to={`/country/${country.id}`} key={country.id} className="country-card">
-                    <img src={props.flags.png} alt={`${props.name} flag`}></img>
-                    <div className="card-info">
-                        <h2>{props.name}</h2>
-                        <p>Population: <span>{formatNumberWithCommas(props.population)}</span></p>
-                        <p>Region: <span>{props.region}</span></p>
-                        <p>Capital: <span>{props.capital}</span></p>
-                    </div>
-                </Link>
-            ))}
+        <div className="card" onClick={() => onSelectCountry(country)}>
+            <img src={country.flags.png} alt={`${country.name} flag`}></img>
+            <div className="card-info">
+                <h2>{country.name}</h2>
+                <p>Population: <span>{formatNumberWithCommas(country.population)}</span></p>
+                <p>Region: <span>{country.region}</span></p>
+                <p>Capital: <span>{country.capital}</span></p>
+            </div>
         </div>
     )
 }
