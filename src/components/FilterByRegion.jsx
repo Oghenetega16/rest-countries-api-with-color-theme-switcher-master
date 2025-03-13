@@ -1,40 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react';
 
-export default function FilterByRegion() {
+export default function FilterByRegion({ onRegionSelect }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedRegion, setSelectedRegion] = useState('Filter By Region');
 
-    const [isOpen, setIsOpen] = React.useState(false)
-    const [selectedRegion, setSelectedRegion] = React.useState('Filter By Region')
-    
-    function toggleDropDown() {
-        setIsOpen(!isOpen)
-    }
+  const toggleDropDown = () => setIsOpen(!isOpen);
 
-    function handleRegionSelect(region) {
-        setSelectedRegion(region)
-        setIsOpen(false)
-    }
+  const handleRegionSelect = (region) => {
+    setSelectedRegion(region);
+    setIsOpen(false);
+    onRegionSelect(region);
+  };
 
-    const regions = ['Africa', 'America', 'Asia', 'Europe', 'Oceania']
+  const regions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 
-    return (
-        <>
-            <div className='select-region'>
-                <div className='filter' onClick={toggleDropDown}>
-                    <p>{selectedRegion}</p>
-                    <i className={isOpen ? "fa-solid fa-angle-down" : "fa-solid fa-angle-up"}></i> 
-                </div>
-                {isOpen && (
-                    <div className='regions'>
-                        <ul>
-                            {regions.map((region) => (
-                                <li key={region} onClick={() => handleRegionSelect(region)}>
-                                    {region}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                )}
-            </div>
-        </>
-    )
+  return (
+    <div className="select-region">
+      <div className="filter" onClick={toggleDropDown}>
+        <p>{selectedRegion}</p>
+        <i
+          className={isOpen ? 'fa-solid fa-angle-up' : 'fa-solid fa-angle-down'}
+        ></i>
+      </div>
+      {isOpen && (
+        <ul className="regions">
+          {regions.map((region) => (
+            <li key={region} onClick={() => handleRegionSelect(region)}>
+              {region}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
 }
