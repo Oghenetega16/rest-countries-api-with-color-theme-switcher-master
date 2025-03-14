@@ -84,6 +84,7 @@ header p {
   display: flex;
   flex-direction: column;
   gap: .3rem;
+  z-index: 2;
 }
 
 .filter {
@@ -131,17 +132,28 @@ header p {
   width: 300px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   background-color: var(--component-background-color);
   margin: 0 auto 2.5rem auto;
   border-radius: .3rem;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.16);
 }
 
-.card img {
+.card-flag {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-flag img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
   border-radius: 0.3rem 0.3rem 0 0;
+  position: absolute; /* Add this */
+  top: 0; /* Add this to ensure image starts from the top */
+  left: 0;
 }
 
 .card-info {
@@ -188,11 +200,6 @@ body.dark-theme {
   margin-bottom: 4rem;
 }
 
-.flag-container img {
-  width: 100%;
-  height: 250px;
-}
-
 .detail-info {
   display: flex;
   flex-direction: column;
@@ -220,8 +227,8 @@ body.dark-theme {
   font-size: 15px;
 }
 
-.border-countries p {
-  margin-bottom: 1rem;
+.border-countries {
+  height: fit-content;
 }
 
 .border-buttons button{
@@ -229,7 +236,7 @@ body.dark-theme {
   margin-right: .5rem;
 }
 
-@media (min-width:768px) {
+@media (min-width:700px) {
   header {
     padding: 2rem 3rem;
   }
@@ -254,7 +261,7 @@ body.dark-theme {
 
   .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     margin: 0 2rem 3rem 2rem;
   }
@@ -273,15 +280,21 @@ body.dark-theme {
     flex-direction: row;
     gap: 100px;
   }
+
+  .border-countries {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
 }
 
 @media (min-width:1024px) {
   header {
-    padding: 2rem 4rem;
+    padding: 2rem;
   }
 
   .search_region {
-    margin: 0 3rem 3rem 3rem;
+    margin: 0 1rem 3rem 1rem;
   }
 
   .search-box {
@@ -289,6 +302,35 @@ body.dark-theme {
   }
 
   .cards {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .detail-info h2 {
+    margin-top: 0;
+  }
+
+  .flag-container img {
+    width: 400px;
+    height: 100%;
+  }
+
+  .detail_flag {
+    display: flex;
+    gap: 9rem;
+    align-items: center;
+  }
+
+  .info-columns p {
+    margin-bottom: .5rem;
+  }
+
+  .border-countries p {
+    margin-bottom: .5rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .search-box {
+    width: 500px;
   }
 }

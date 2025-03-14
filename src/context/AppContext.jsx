@@ -1,20 +1,24 @@
 import React, { createContext, useState, useEffect } from 'react';
-import data from '../../public/data.json';
 
 export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const [allCountries, setAllCountries] = useState([]);
-  const [filteredCountries, setFilteredCountries] = useState([]);
-  
-  useEffect(() => {
-    setAllCountries(data);
-    setFilteredCountries(data);
-  }, []);
+    const [allCountries, setAllCountries] = useState([]);
+    const [filteredCountries, setFilteredCountries] = useState([]);
 
-  return (
-    <AppContext.Provider value={{ allCountries, filteredCountries, setFilteredCountries }}>
-      {children}
-    </AppContext.Provider>
-  );
+    useEffect(() => {
+        fetch('/data.json')
+            .then(response => response.json())
+            .then(data => {
+                setAllCountries(data);
+                setFilteredCountries(data);
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    }, []);
+
+    return (
+        <AppContext.Provider value={{ allCountries, filteredCountries, setFilteredCountries }}>
+            {children}
+        </AppContext.Provider>
+    );
 };
